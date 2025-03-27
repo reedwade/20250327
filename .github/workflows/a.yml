@@ -18,6 +18,10 @@ on:
         type: boolean
 
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploy_oregon=${{ inputs.deploy_oregon }}, deploy_sydney=${{ inputs.deploy_sydney }}"
 
   deploy_to_oregon:
     if: inputs.deploy_oregon
