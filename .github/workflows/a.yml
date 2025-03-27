@@ -3,37 +3,30 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
 
+  # push:
+
   workflow_dispatch:
     inputs:
-      aa:
-        description: 'Log level'
+      deploy_oregon:
+        description: 'Deploy to Oregon'
         required: true
-        default: 'warning'
-        type: choice
-        options:
-          - info
-          - warning
-          - debug
+        type: boolean
+      deploy_sydney:
+        description: 'Deploy to Sydney'
+        required: true
+        type: boolean
 
 jobs:
-  cake:
+
+  deploy_to_oregon:
+    if: inputs.deploy_oregon
     runs-on: ubuntu-latest
     steps:
-      - run: echo "aa ${{ inputs.aa }}"
+      - run: echo "deploy_oregon=${{ inputs.deploy_oregon }}, deploy_sydney=${{ inputs.deploy_sydney }}"
 
-
-  # Explore-GitHub-Actions:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-  #     - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-  #     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-  #     - name: Check out repository code
-  #       uses: actions/checkout@v4
-  #     - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-  #     - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-  #     - name: List files in the repository
-  #       run: |
-  #         ls ${{ github.workspace }}
-  #     - run: echo "🍏 This job's status is ${{ job.status }}."
+  deploy_to_sydney:
+    if: inputs.deploy_sydney
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploy_oregon=${{ inputs.deploy_oregon }}, deploy_sydney=${{ inputs.deploy_sydney }}"
 
