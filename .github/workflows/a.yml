@@ -24,13 +24,13 @@ jobs:
       - run: echo "deploy_oregon=${{ inputs.deploy_oregon }}, deploy_sydney=${{ inputs.deploy_sydney }}"
 
   deploy_to_oregon:
-    if: inputs.deploy_oregon != false
+    if: toJson(inputs.deploy_oregon) != 'false'
     runs-on: ubuntu-latest
     steps:
       - run: echo "deploy_oregon=${{ inputs.deploy_oregon }}, deploy_sydney=${{ inputs.deploy_sydney }}"
 
   deploy_to_sydney:
-    if: inputs.deploy_sydney != false
+    if: toJson(inputs.deploy_sydney) != 'false'
     runs-on: ubuntu-latest
     steps:
       - run: echo "deploy_oregon=${{ inputs.deploy_oregon }}, deploy_sydney=${{ inputs.deploy_sydney }}"
