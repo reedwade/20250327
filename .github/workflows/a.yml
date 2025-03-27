@@ -8,10 +8,12 @@ on:
     inputs:
       deploy_oregon:
         description: 'Deploy to Oregon'
+        default: true
         required: true
         type: boolean
       deploy_sydney:
         description: 'Deploy to Sydney'
+        default: true
         required: true
         type: boolean
 
